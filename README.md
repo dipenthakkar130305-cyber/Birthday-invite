@@ -1,4 +1,4 @@
-# Harsh's 26th Birthday Party 🎉
+# Harsh's 26th Party Night 🎉
 
 Digital party invite — static HTML/CSS/JS, hosted on Vercel.
 
