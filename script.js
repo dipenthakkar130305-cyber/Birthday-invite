@@ -1,3 +1,48 @@
+// ---------- Party video (vertical) with tap-for-sound ----------
+(function () {
+  const video = document.getElementById('partyVideo');
+  const placeholder = document.getElementById('videoPlaceholder');
+  const soundBtn = document.getElementById('soundBtn');
+
+  function showVideo() {
+    video.style.display = 'block';
+    soundBtn.style.display = 'block';
+    placeholder.style.display = 'none';
+  }
+  function showPlaceholder() {
+    video.style.display = 'none';
+    soundBtn.style.display = 'none';
+    placeholder.style.display = 'flex';
+  }
+
+  video.addEventListener('loadedmetadata', showVideo);
+  video.addEventListener('error', showPlaceholder);
+  if (video.readyState >= 1) showVideo();
+
+  function setSound(on) {
+    video.muted = !on;
+    soundBtn.textContent = on ? '🔇 Mute' : '🔊 Tap for sound';
+    soundBtn.classList.toggle('on', on);
+  }
+
+  soundBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const turnOn = video.muted;
+    if (turnOn) video.currentTime = 0;
+    setSound(turnOn);
+    video.play().catch(() => {});
+  });
+
+  // Tapping the video itself: play/pause
+  video.addEventListener('click', () => {
+    if (video.paused) video.play().catch(() => {});
+    else video.pause();
+  });
+
+  // Autoplay (muted) — some browsers need a nudge
+  video.play().catch(() => {});
+})();
+
 // ---------- Map toggle ----------
 (function () {
   const btn = document.querySelector('.toggle-map');
@@ -144,6 +189,7 @@ const Fireworks = (function () {
     document.body.classList.add('no-scroll');
     Fireworks.start();
     launchConfetti(140);
+    const v = document.getElementById('partyVideo'); if (v) v.pause();
     // Behave like a new page: phone's back button returns to the invite
     try { history.pushState({ celebrate: true }, '', '#see-you-there'); } catch (e) {}
   }
