@@ -32,23 +32,6 @@
         <h1>Harsh's <span class="big">26<sup>th</sup></span> Birthday Party!</h1>
         <div class="emoji-row">🥳 🎉 🍾 🎶</div>
 
-        <div class="video-container">
-          <video
-            id="partyVideo"
-            src="media/party-video.mp4"
-            poster="media/party-video-poster.jpg"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-          ></video>
-          <button id="soundBtn" class="sound-btn" type="button">🔊 Tap for sound</button>
-          <div id="videoPlaceholder" class="video-placeholder">
-            <span class="ph-icon">🎬</span>
-            <span>Something special is coming here soon…</span>
-          </div>
-        </div>
       </header>
 
       <section class="event-details">
@@ -122,6 +105,17 @@
 
       <footer>30.10.2026 · Sanand</footer>
     </main>
+
+    <div id="celebration" class="celebration" hidden>
+      <canvas id="fireworks"></canvas>
+      <div class="celebration-card">
+        <div class="ty-emoji">🥂</div>
+        <p class="ty-title">Thank you for joining!</p>
+        <p class="ty-sub">See you soon — let's party hard! 🎉</p>
+        <p class="ty-meta">30th Oct · 7 PM onwards · KBG Club, Sanand</p>
+        <button id="closeCelebration" class="close-btn" type="button">Back to invite</button>
+      </div>
+    </div>
 
     <div id="confetti-container"></div>
     <script src="script.js"></script>
