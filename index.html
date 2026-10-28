@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harsh's 26th Birthday Party!</title>
+    <meta name="description" content="Harsh is turning 26 — 30th Oct 2026, 7 PM onwards at Kalhaar Blues and Greens, Sanand. Let's party!" />
+    <meta name="theme-color" content="#0d0a1f" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="media/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon-16x16.png" />
+    <link rel="manifest" href="media/site.webmanifest" />
+
+    <!-- Social sharing (WhatsApp / Instagram preview) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Harsh's 26th Birthday Party! 🎉" />
+    <meta property="og:description" content="30th Oct 2026 · 7 PM onwards · Kalhaar Blues and Greens, Sanand. You're invited!" />
+    <meta property="og:image" content="/media/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <main class="container">
+      <header>
+        <p class="eyebrow">You're invited</p>
+        <h1>Harsh's <span class="big">26<sup>th</sup></span> Birthday Party!</h1>
+        <div class="emoji-row">🥳 🎉 🍾 🎶</div>
+
+        <div class="video-container">
+          <!-- Drop the party video at media/party-video.mp4 and it shows up here automatically -->
+          <video
+            id="partyVideo"
+            src="media/party-video.mp4"
+            controls
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          ></video>
+          <div id="videoPlaceholder" class="video-placeholder">
+            <span class="ph-icon">🎬</span>
+            <span>Something special is coming here soon…</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="event-details">
+        <h2>The Plan</h2>
+
+        <div class="detail-grid">
+          <div class="detail">
+            <span class="d-icon">📅</span>
+            <div>
+              <span class="d-label">Date</span>
+              <span class="d-value">Friday, 30th October 2026</span>
+            </div>
+          </div>
+          <div class="detail">
+            <span class="d-icon">⏰</span>
+            <div>
+              <span class="d-label">Time</span>
+              <span class="d-value">7:00 PM onwards</span>
+            </div>
+          </div>
+          <div class="detail wide">
+            <span class="d-icon">📍</span>
+            <div>
+              <span class="d-label">Venue</span>
+              <span class="d-value">Villa No. 933, Kalhaar Blues and Greens, Sanand – Viramgam Highway, Sanand, Gujarat 382110</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="party-message">
+          Good food, loud music, and the best people under one roof — come raise a glass
+          as Harsh levels up to 26! Bring your best vibes and your dancing shoes,
+          we'll take care of the rest. It's going to be a night to remember. 🍻
+        </p>
+
+        <div class="map-container">
+          <div class="map-wrapper">
+            <iframe
+              title="Venue map"
+              src="https://maps.google.com/maps?q=Kalhaar%20Blues%20and%20Greens%2C%20Sanand%2C%20Gujarat&z=15&output=embed"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div class="map-buttons">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Kalhaar%20Blues%20and%20Greens%2C%20Sanand%2C%20Gujarat%20382110"
+              target="_blank"
+              rel="noopener"
+              class="map-btn"
+              >Open in Google Maps</a
+            >
+            <button class="map-btn ghost toggle-map" type="button">Hide Map</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="answer-container">
+        <h2>So… are you in?</h2>
+        <div id="answerButtons" class="answer-buttons">
+          <button class="answer-btn" type="button">Yes, I'll be there! 🙌</button>
+          <button class="answer-btn alt" type="button">I'm surely gonna come! 🔥</button>
+        </div>
+        <div id="thankYou" class="thank-you" hidden>
+          <div class="ty-emoji">🥂</div>
+          <p class="ty-title">Thank you for joining!</p>
+          <p>See you soon — let's party hard! 🎉</p>
+        </div>
+      </section>
+
+      <footer>30.10.2026 · Sanand</footer>
+    </main>
+
+    <div id="confetti-container"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
