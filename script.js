@@ -1,23 +1,46 @@
-// ---------- Video slot: show video if media/party-video.mp4 exists, else placeholder ----------
+// ---------- Party video (vertical) with tap-for-sound ----------
 (function () {
   const video = document.getElementById('partyVideo');
   const placeholder = document.getElementById('videoPlaceholder');
+  const soundBtn = document.getElementById('soundBtn');
 
-  function showPlaceholder() {
-    video.style.display = 'none';
-    placeholder.style.display = 'flex';
-  }
   function showVideo() {
     video.style.display = 'block';
+    soundBtn.style.display = 'block';
     placeholder.style.display = 'none';
   }
+  function showPlaceholder() {
+    video.style.display = 'none';
+    soundBtn.style.display = 'none';
+    placeholder.style.display = 'flex';
+  }
 
-  video.addEventListener('error', showPlaceholder);
-  video.addEventListener('loadeddata', showVideo);
   video.addEventListener('loadedmetadata', showVideo);
-  // Start with placeholder until the video proves it can load
-  showPlaceholder();
-  video.load();
+  video.addEventListener('error', showPlaceholder);
+  if (video.readyState >= 1) showVideo();
+
+  function setSound(on) {
+    video.muted = !on;
+    soundBtn.textContent = on ? '🔇 Mute' : '🔊 Tap for sound';
+    soundBtn.classList.toggle('on', on);
+  }
+
+  soundBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const turnOn = video.muted;
+    if (turnOn) video.currentTime = 0;
+    setSound(turnOn);
+    video.play().catch(() => {});
+  });
+
+  // Tapping the video itself: play/pause
+  video.addEventListener('click', () => {
+    if (video.paused) video.play().catch(() => {});
+    else video.pause();
+  });
+
+  // Autoplay (muted) — some browsers need a nudge
+  video.play().catch(() => {});
 })();
 
 // ---------- Map toggle ----------

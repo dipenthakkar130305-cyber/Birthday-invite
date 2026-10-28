@@ -18,7 +18,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Harsh's 26th Birthday Party! 🎉" />
     <meta property="og:description" content="30th Oct 2026 · 7 PM onwards · Kalhaar Blues and Greens, Sanand. You're invited!" />
-    <meta property="og:image" content="/media/og-image.jpg" />
+    <meta property="og:image" content="https://harsh-26th-birthday.vercel.app/media/og-image.jpg" />
+    <meta property="og:url" content="https://harsh-26th-birthday.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
@@ -32,17 +33,17 @@
         <div class="emoji-row">🥳 🎉 🍾 🎶</div>
 
         <div class="video-container">
-          <!-- Drop the party video at media/party-video.mp4 and it shows up here automatically -->
           <video
             id="partyVideo"
             src="media/party-video.mp4"
-            controls
+            poster="media/party-video-poster.jpg"
             autoplay
             muted
             loop
             playsinline
-            preload="metadata"
+            preload="auto"
           ></video>
+          <button id="soundBtn" class="sound-btn" type="button">🔊 Tap for sound</button>
           <div id="videoPlaceholder" class="video-placeholder">
             <span class="ph-icon">🎬</span>
             <span>Something special is coming here soon…</span>
