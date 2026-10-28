@@ -133,10 +133,9 @@ const Fireworks = (function () {
   return { start, stop };
 })();
 
-// ---------- "Are you in?" buttons → full-screen celebration ----------
+// ---------- "Are you in?" buttons → full-screen thank-you "page" ----------
 (function () {
   const buttons = document.getElementById('answerButtons');
-  const thankYou = document.getElementById('thankYou');
   const overlay = document.getElementById('celebration');
   const closeBtn = document.getElementById('closeCelebration');
 
@@ -145,31 +144,33 @@ const Fireworks = (function () {
     document.body.classList.add('no-scroll');
     Fireworks.start();
     launchConfetti(140);
+    // Behave like a new page: phone's back button returns to the invite
+    try { history.pushState({ celebrate: true }, '', '#see-you-there'); } catch (e) {}
   }
 
-  function closeCelebration() {
+  function hideCelebration() {
     overlay.hidden = true;
     document.body.classList.remove('no-scroll');
     Fireworks.stop();
-    buttons.hidden = true;
-    thankYou.hidden = false;
   }
 
   buttons.querySelectorAll('.answer-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      openCelebration();
-      try { localStorage.setItem('harsh26-joined', '1'); } catch (e) {}
-    });
+    btn.addEventListener('click', openCelebration);
   });
-  closeBtn.addEventListener('click', closeCelebration);
 
-  // If they already answered on this device, show the small thank-you
-  try {
-    if (localStorage.getItem('harsh26-joined') === '1') {
-      buttons.hidden = true;
-      thankYou.hidden = false;
-    }
-  } catch (e) {}
+  closeBtn.addEventListener('click', () => {
+    if (location.hash === '#see-you-there') history.back();
+    else hideCelebration();
+  });
+
+  window.addEventListener('popstate', () => {
+    if (location.hash !== '#see-you-there') hideCelebration();
+  });
+
+  // Opening a shared link that ends in #see-you-there should still show the invite first
+  if (location.hash === '#see-you-there') {
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+  }
 })();
 
 // ---------- Confetti ----------
